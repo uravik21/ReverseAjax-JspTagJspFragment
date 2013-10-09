@@ -10,9 +10,9 @@ Dependencies to build this application:
 
 Please copy the following jars to lib folder
 
-jstl.jar
-servlet-api.jar
-standard.jar
+1. jstl.jar
+2. servlet-api.jar
+3. standard.jar
 
 Building War
 ============
