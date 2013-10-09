@@ -22,3 +22,5 @@ Building War
 3. war is created and copied to target folder
 4. copy that war to webapps folder of your tomcat
 
+/* Introduction and Readme content will be updated soon */ 
+/* work in progress */
