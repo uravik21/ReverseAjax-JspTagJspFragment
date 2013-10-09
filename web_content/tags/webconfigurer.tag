@@ -45,17 +45,16 @@
 
 	${newline}
 	<c:forEach items="${styleResourcesMap}" var="iter">
-		<link href="${iter.value}" rel="stylesheet" />${newlineToken}
+		<link href="${iter.value}" rel="stylesheet" />${newline}
 	</c:forEach>
 	<c:forEach items="${scriptResourcesMap}" var="iter">
-		<script src="${iter.value}"></script>${newlineToken}
+		<script src="${iter.value}"></script>${newline}
 	</c:forEach>
 	<c:forEach items="${directScriptMap}" var="iter">
-		<script>${iter.value}</script>${newlineToken}
+		<script>${iter.value}</script>${newline}
 	</c:forEach>
 
 	<script>resourcesUtil.resourcesLoaded['${id}'] = true;</script>
 	<c:set target="${resourcesLoaded}" property="${id}" value="${true}" />
 
 </c:if>
-
