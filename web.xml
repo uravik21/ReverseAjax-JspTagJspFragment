@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project name="ReverseAjax-JspTagJspFragmetDemo" default="web-archeive" basedir=".">
+
+	<property name="lib.dir" value="lib" />
+	<property name="web_content.dir" value="web_content" />
+	<property name="src.dir" value="src/main/java" />
+	<property name="build.dir" value="build" />
+	<property name="target.dir" value="target" />
+
+	<target name="clean">
+		<echo>Cleaning the ${build.dir}</echo>
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="create" depends="clean">
+		<echo>Creating required directories</echo>
+		<mkdir dir="${build.dir}/js" />
+		<mkdir dir="${build.dir}/WEB-INF/classes" />
+		<mkdir dir="${build.dir}/WEB-INF/lib" />
+		<mkdir dir="${build.dir}/WEB-INF/tags" />
+		<mkdir dir="${build.dir}/WEB-INF/tlds" />
+		<mkdir dir="${target.dir}" />
+	</target>
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="servlet-api.jar" />
+	</path>
+
+	<target name="compile" depends="create">
+		<echo>Compiling source files</echo>
+		<javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="copy" depends="compile">
+		<copy todir="${build.dir}/WEB-INF">
+			<fileset dir="${web_content.dir}/WEB-INF" />
+		</copy>
+		<copy todir="${build.dir}">
+			<fileset dir="${web_content.dir}" />
+		</copy>
+		<copy todir="${build.dir}/WEB-INF/lib">
+			<fileset dir="${lib.dir}">
+				<exclude name="servlet-api.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="web-archeive" depends="copy">
+		<echo>Packaging war</echo>
+		<war destfile="${target.dir}/${ant.project.name}.war" webxml="${build.dir}/WEB-INF/web.xml">
+			<fileset dir="${build.dir}" />
+		</war>
+	</target>
+
+</project>
