@@ -1,0 +1,12 @@
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
+
+<tags:webconfigurer id="landingResources">
+
+<jsp:attribute name="scriptResources">
+
+js/jquery-1.7.2.js
+js/taskutil.js
+
+</jsp:attribute>
+
+</tags:webconfigurer>
